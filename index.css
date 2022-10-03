@@ -50,7 +50,7 @@ form {
 }
 
 form input {
-    padding: 0.1875rem 2.5rem ;
+    padding: 0.1875rem 2.5rem;
     width: 75%;
     background-image: url("icons/search.png");
     background-repeat: no-repeat;
@@ -106,15 +106,13 @@ main {
 .movie-card-more {
     margin: 2em 0;
     display: flex;
-    color:#000000;
+    color: #000000;
     font-weight: bold;
-
 }
 .poster {
     max-width: 40%;
     object-fit: cover;
     background-color: hsla(0, 0%, 17%, 1);
-     
 }
 
 .movie-container {
@@ -123,26 +121,25 @@ main {
     justify-content: space-between;
     border-bottom: 1.5px solid hsla(0, 0%, 17%, 1);
     padding: 2em 0;
-    max-width: 75%
+    max-width: 75%;
 }
 
 .movie-info {
-    margin-left: 1em;  
-    min-width: 35%
+    margin-left: 1em;
+    min-width: 35%;
 }
 
-.movie-sub-info{
+.movie-sub-info {
     color: #111827;
-    font-size: .75rem;
+    font-size: 0.75rem;
     display: flex;
     justify-content: space-between;
 }
 
-
 .css-button-shadow-border--sand {
     min-width: 130px;
     height: 40px;
-    color: #fff;
+    color: #000000;
     padding: 5px 10px;
     font-weight: bold;
     cursor: pointer;
@@ -152,16 +149,16 @@ main {
     outline: none;
     border-radius: 5px;
     border: none;
-    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5), 7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+        4px 4px 5px 0px rgba(0, 0, 0, 0.1);
     background: #adb5bd;
-  }
-  .css-button-shadow-border--sand:hover {
+}
+.css-button-shadow-border--sand:hover {
     background-color: #ced4da;
-  }
-  .css-button-shadow-border--sand:active {
+}
+.css-button-shadow-border--sand:active {
     top: 2px;
-  }
-
+}
 
 @media (min-width: 700px) {
     body {
@@ -169,7 +166,6 @@ main {
     }
 
     .movie-container {
-        max-width: 100%
+        max-width: 100%;
     }
-    
 }

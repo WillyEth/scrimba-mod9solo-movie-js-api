@@ -1,46 +1,30 @@
-const searchEl = document.getElementById("btn-search")
-const mainEl = document.getElementById("movie-list")
-const inputEl = document.getElementById("search-bar")
-const listFromLocalStorage = JSON.parse(localStorage.getItem("myList"))
 const watchListPage = document.getElementById("start-info").innerText
-
-let dataMovie = []
+const mainEl = document.getElementById("movie-list")
+const divEl = document.getElementById("wrapper")
+const btnEl = document.getElementById("btn-clear-all")
+let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myList"))
 let myList = []
- 
 
-function setWatchList(imdbID) {
-   
-    if (myList.length < 10) {
-        myList.push(imdbID)
-        localStorage.setItem("myList", JSON.stringify(myList))
-        console.log("hello")
-    } else {
-        alert("Can only save 10 Favs")
-    }
-}
 
- 
-searchEl.addEventListener("click", (event) => {
-    event.preventDefault()
-    getmovieDB().then((data) => renderList(data))
+btnEl.addEventListener("click", () => {
+    localStorage.clear()
+
+    getmovieInfo()
 })
 
-const getmovieDB = async () => {
-    let searchValue = inputEl.value.trim().replaceAll(` `, `+`)
 
-    const response = await fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=cbb6fa09`)
-    const data = await response.json()
-    return data
-}
-
-const renderList = (data) => {
-    if (data.Response === "True") {
-        dataMovie = []
-        dataMovie = data.Search.map((item) => item.imdbID)
-
-        getmovieInfo(dataMovie)
-    } else {
-        alert("Search again No info found")
+function setRemoveList(imdbID) {
+    leadsFromLocalStorage = JSON.parse(localStorage.getItem("myList"))
+    
+    if (leadsFromLocalStorage.length > 0) {
+        myList = leadsFromLocalStorage.filter((value) => {
+            if (value === imdbID) {
+            } else return value
+        })
+        localStorage.setItem("myList", JSON.stringify(myList))
+        if (myList) {
+            getmovieInfo(myList)
+        }
     }
 }
 
@@ -78,11 +62,17 @@ const getmovieInfo = async (data) => {
             <small class="movie-card-more">Writer: ${Writer}</small>
             <small class="movie-card-more">Director: ${Director}</small>
             <small class="movie-card-more">BoxOffice: ${BoxOffice}</small>
-            <button onclick=setWatchList("${imdbID}") class="css-button-shadow-border--sand" >Add to Watch List</button>
+            <button onclick=setRemoveList("${imdbID}") class="css-button-shadow-border--sand" >Remove from WatchList</button>
              </div>
            
         </div>
         </div>
     </div>`
+    }
+}
+
+if (watchListPage === "Your Watchlist") {
+    if (leadsFromLocalStorage.length > 0) {
+        getmovieInfo(leadsFromLocalStorage)
     }
 }
